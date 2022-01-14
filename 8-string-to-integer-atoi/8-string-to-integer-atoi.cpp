@@ -8,10 +8,9 @@ class Solution {
 public:
     int myAtoi(string s) {
         int result = 0;
-        bool isPlusSignRead = false;
         bool isNegative = false;
         bool isNumberRead = false;
-        bool isHyphenRead = false;
+        bool isSignRead = false;
         bool isLeadingSpaceOver = false;
         cout<<INT_MIN<<endl;
         cout<<INT_MAX<<endl;
@@ -54,15 +53,15 @@ public:
             {
                 if(isNumberRead)
                     break;
-                if(c=='+' && !isPlusSignRead && !isHyphenRead)
+                if(c=='+' && !isSignRead)
                 {
-                    isPlusSignRead = true;
+                    isSignRead = true;
                     continue;
                 }
-                if(c=='-' && !isHyphenRead && !isPlusSignRead)
+                if(c=='-' && !isSignRead)
                 {
                     result*=-1;
-                    isHyphenRead = true;
+                    isSignRead = true;
                     isNegative = !isNegative;
                     continue;
                 }
