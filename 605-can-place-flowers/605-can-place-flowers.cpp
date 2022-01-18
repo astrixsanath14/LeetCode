@@ -6,33 +6,34 @@ public:
       {
         return n-(flowerbed[0]?0:1) <= 0;
       }
-      for(int i = 0;i<flowerbedSize;i++)
+      int prev=0;
+      int count=0;
+      for(int cur:flowerbed)
       {
-        if(n && !flowerbed[i])
-        {
-          if(i == 0)
+        if(cur)
           {
-            if(!flowerbed[i+1]){
-              n--;
-              flowerbed[i]=1;
+           if(prev)
+            {
+             count--;
+            }
+          else
+          {
+            prev=1;
+          }
+          }
+          else
+          {
+            if(prev)
+            {
+              prev = 0;
+            }
+            else
+            {
+              prev = 1;
+              count++;
             }
           }
-          else if(i==flowerbedSize - 1)
-          {
-            if(!flowerbed[i-1]){
-              n--;
-              flowerbed[i]=1;
-            }
-          }
-          else if(!flowerbed[i-1] && !flowerbed[i+1])
-          {
-            n--;
-            flowerbed[i]=1;
-          }
-        }
-        if(!n)
-          return true;
-        }
-      return false;
+      }
+      return count>=n;
     }
 };
