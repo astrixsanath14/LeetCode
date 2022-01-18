@@ -31,8 +31,8 @@ public:
           }
         }
         if(!n)
-          break;
+          return true;
         }
-      return n==0;
+      return false;
     }
 };
