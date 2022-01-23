@@ -33,7 +33,6 @@ public:
       int numOfDigits = countNumberOfDigits(low);
       vector<int> result;
       int seq = generateFirstSequenceForCount(numOfDigits);
-      cout<<"first seq: " << seq<<endl;
       while(seq <= high)
       {
         if(seq >= low && seq <= high)
@@ -48,7 +47,6 @@ public:
         else
         {
           seq = getNextSequence(seq, numOfDigits); 
-          cout<<"next: " << seq<<endl;
         }
       }
       return result;
