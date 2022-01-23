@@ -2,12 +2,16 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) 
     {
-      int profit = 0;
-      for(int i=prices.size()-2;i>=0;i--)
+      int n = prices.size();
+      vector<int> suffixMax(n);
+      vector<int> profits(n);
+      suffixMax[n-1] = prices[n-1];
+      profits[n-1]=0;
+      for(int i=n-2;i>=0;i--)
       {
-        profit = max(profit,prices[i+1] - prices[i]);
-        prices[i] = max(prices[i],prices[i+1]);
+        suffixMax[i] = max(prices[i],suffixMax[i+1]);
+        profits[i] = max(profits[i+1],suffixMax[i+1] - prices[i]);
       }
-      return profit;
+      return profits[0];
     }
 };
