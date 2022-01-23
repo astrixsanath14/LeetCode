@@ -8,27 +8,14 @@ void reverseTheVector(vector<int>& nums, int n, int start, int end)
     }
 }
 
-void printVectorContents(vector<int>& arr)
-{
-  for(int val: arr)
-  {
-    cout<<val<<" ";
-  }
-  cout<<endl;
-}
-
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) 
     {
       int n = nums.size();
       k=k%n;
-      printVectorContents(nums);
       reverseTheVector(nums, n, 0, n-k);
-      printVectorContents(nums);
       reverseTheVector(nums, n, n-k, n);
-      printVectorContents(nums);
       reverseTheVector(nums, n, 0, n);
-      printVectorContents(nums);
     }
 };
