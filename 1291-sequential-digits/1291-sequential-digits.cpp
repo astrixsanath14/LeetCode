@@ -14,20 +14,26 @@ int generateFirstSequenceForCount(int count)
   return generateFirstSequenceForCount(count-1)*10 + count;
 }
 
-int getNextSequence(int num)
+int getNextSequenceRecursively(int num)
 {
   if(num==0)
     return 0;
-  return getNextSequence(num/10)*10 + num%10 + 1;
+  return getNextSequenceRecursively(num/10)*10 + num%10 + 1;
+}
+
+int getNextSequence(int num, int count)
+{
+  return (num%((int)pow(10,count-1)))*10+(num%10)+1;
 }
 
 class Solution {
 public:
     vector<int> sequentialDigits(int low, int high) 
     {
-      int i=1, numOfDigits = countNumberOfDigits(low);
+      int numOfDigits = countNumberOfDigits(low);
       vector<int> result;
       int seq = generateFirstSequenceForCount(numOfDigits);
+      cout<<"first seq: " << seq<<endl;
       while(seq <= high)
       {
         if(seq >= low && seq <= high)
@@ -41,9 +47,9 @@ public:
         }
         else
         {
-          seq = getNextSequence(seq); 
+          seq = getNextSequence(seq, numOfDigits); 
+          cout<<"next: " << seq<<endl;
         }
-        cout<<"next: " <<seq<<endl;
       }
       return result;
     }
