@@ -1,12 +1,3 @@
-void printVectorContents(vector<int>& arr)
-{
-  for(int val: arr)
-  {
-    cout<<val<<" ";
-  }
-  cout<<endl;
-}
-
 class Solution {
 public:
     int maxProfit(vector<int>& prices) 
@@ -36,8 +27,6 @@ public:
       {
         maxProfit = max(maxProfit, profitsPrefix[i]+profitsSuffix[i+1]);
       }
-      printVectorContents(profitsSuffix);
-      printVectorContents(profitsPrefix);
       return max(maxProfit,profitsSuffix[0]);
     }
 };
