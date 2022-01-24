@@ -7,11 +7,11 @@ class Solution {
 public:
   bool detectCapitalUse(string word) 
   {
-    int capsCount = 0,len = word.size();
-    for(int i=0;i<len;i++)
+    int capsCount = word.size();
+    for(int i=0;i<word.size();i++)
     {
-      capsCount+=isCaps(word[i]);
+      capsCount-=!isCaps(word[i]);
     }
-    return capsCount==len || capsCount == 0 || (capsCount == 1 && isCaps(word[0]));
+    return capsCount==word.size() || capsCount == 0 || (capsCount == 1 && isCaps(word[0]));
   }
 };
