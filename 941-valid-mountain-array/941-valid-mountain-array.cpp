@@ -8,7 +8,6 @@ public:
         return false;
       for(int i=1;i<size;i++)
       {
-        cout<<up<<" "<<m<<" \n";
         if(arr[i] > arr[i-1])
         {
           if(!up)
