@@ -14,24 +14,11 @@ public:
     {
       sMap[s[i]]++;
       if(i<k)
-      {
         pMap[p[i]]++;
-        if(i==k-1)
-        {
-          if(pMap == sMap)
-          {
-            res.push_back(i-k+1);
-          }
-        }
-      }
       else
-      {
-        sMap[s[i-k]]--; 
-        if(pMap == sMap)
-        {
-          res.push_back(i-k+1);
-        }
-      }
+        sMap[s[i-k]]--;
+      if(i>=k-1 && pMap == sMap)
+        res.push_back(i-k+1);
     }
     return res;
   }
