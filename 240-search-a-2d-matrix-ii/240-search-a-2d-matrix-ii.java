@@ -9,7 +9,6 @@ class Solution {
         col--;
       if(col<0)
         break;
-      System.out.println(col);
       while(row<m && target>matrix[row][col])
         row++;
       if(row>=m)
