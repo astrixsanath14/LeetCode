@@ -1,9 +1,7 @@
 class NumMatrix {
 public:
   vector<vector<long long>>prefixMatrix;
-  vector<vector<int>>originalMatrix;
     NumMatrix(vector<vector<int>>& matrix) {
-      originalMatrix = matrix;
       int m = matrix.size();
       int n = matrix[0].size();
       prefixMatrix.resize(m);
@@ -13,13 +11,8 @@ public:
         for(int j=0;j<n;j++)
         {
           prefixMatrix[i][j]=matrix[i][j];
-        }
-      }
-      for(int i=0;i<m;i++)
-      {
-        for(int j=1;j<n;j++)
-        {
-          prefixMatrix[i][j]+=prefixMatrix[i][j-1];
+          if(j>0)
+            prefixMatrix[i][j]+=prefixMatrix[i][j-1];
         }
       }
       for(int i=0;i<n;i++)
@@ -29,24 +22,6 @@ public:
           prefixMatrix[j][i]+=prefixMatrix[j-1][i];
         }
       }
-      
-      // for(int i=0;i<m;i++)
-      // {
-      //   for(int j=0;j<n;j++)
-      //   {
-      //     cout<<prefixMatrix[i][j]<<" ";
-      //   }
-      //   cout<<"\n";
-      // }
-      // cout<<"-----\n";
-      // for(int i=0;i<m;i++)
-      // {
-      //   for(int j=0;j<n;j++)
-      //   {
-      //     cout<<originalMatrix[i][j]<<" ";
-      //   }
-      //   cout<<"\n";
-      // }
     }
     
     int sumRegion(int row1, int col1, int row2, int col2) {
