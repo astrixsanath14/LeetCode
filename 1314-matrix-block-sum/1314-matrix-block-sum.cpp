@@ -42,8 +42,8 @@ public:
     {
       sum+=prefixMatrix[row1-1][col1-1];
     }
-    cout<<row1<<" "<<col1<<" "<<row2<<" "<<col2<<" "<<sum;
-    cout<<"\n";
+    // cout<<row1<<" "<<col1<<" "<<row2<<" "<<col2<<" "<<sum;
+    // cout<<"\n";
     return sum;
   }
   
