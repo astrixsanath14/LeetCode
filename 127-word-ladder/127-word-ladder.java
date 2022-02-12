@@ -23,9 +23,9 @@ class Solution {
                         arr[j] = (char) k;
                         
                         String str = new String(arr);
-                        if(set.contains(str) && !visited.contains(str)){
+                        if(set.contains(str)){
                             queue.add(str);
-                            visited.add(str);
+                            set.remove(str);
                         }
                     }
                 }
