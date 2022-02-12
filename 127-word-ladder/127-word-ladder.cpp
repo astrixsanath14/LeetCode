@@ -41,11 +41,10 @@ int Graph::BFS(string &startVertex, string &endVertex, vector<string>& wordList)
     {
       for(int j=0;j<26;j++)
       {
-        string temp = currVertex;
-        temp[i] = 'a' + j;
-        if(temp!=currVertex && wordOccurrence[temp])
+        string adjVertex = currVertex;
+        adjVertex[i] = 'a' + j;
+        if(adjVertex!=currVertex && wordOccurrence[adjVertex])
         {
-          string adjVertex = temp;
           if (vertexDistance[adjVertex]==-1) {
             vertexDistance[adjVertex] = vertexDistance[currVertex]+1;
             queue.push_back(adjVertex);
