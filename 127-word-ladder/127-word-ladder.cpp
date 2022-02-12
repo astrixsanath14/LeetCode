@@ -31,10 +31,10 @@ int Graph::BFS(string &startVertex, string &endVertex, vector<string>& wordList)
     //Modified
     for(int i=0;i<len;i++)
     {
+      string adjVertex = currVertex;
+      adjVertex[i] = 'a';
       for(int j=0;j<26;j++)
       {
-        string adjVertex = currVertex;
-        adjVertex[i] = 'a' + j;
         if(adjVertex!=currVertex && wordOccurrence[adjVertex])
         {
           if (vertexDistance[adjVertex]==-1) {
@@ -46,6 +46,7 @@ int Graph::BFS(string &startVertex, string &endVertex, vector<string>& wordList)
             }
           }
         }
+        adjVertex[i]++;
       }
     }
   }
