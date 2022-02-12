@@ -1,8 +1,7 @@
 unordered_map<string,bool> wordOccurrence;
 class Graph {
   map<string,int> vertexDistance;
-
-   public:
+  public:
   Graph(vector<string> &);
   void addVertex(string &vertex);
   int BFS(string &startVertex, string &endVertex, vector<string>& wordList);
