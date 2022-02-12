@@ -1,21 +1,14 @@
 unordered_map<string,bool> wordOccurrence;
 class Graph {
-  int numVertices;
   map<string,int> vertexDistance;
 
    public:
-  Graph(int vertices);
-  void setVertices(vector<string> &vertices);
+  Graph(vector<string> &);
   void addVertex(string &vertex);
   int BFS(string &startVertex, string &endVertex, vector<string>& wordList);
 };
 
-Graph::Graph(int vertices) {
-  numVertices = vertices;
-}
-
-void Graph::setVertices(vector<string> &vertices)
-{ 
+Graph::Graph(vector<string> &vertices) {
   for (string vertex:vertices)
     addVertex(vertex);
 }
@@ -69,8 +62,7 @@ public:
       wordOccurrence[word] = true;
     if(!wordOccurrence[endWord])
       return 0;
-    Graph g(wordList.size()+1);
-    g.setVertices(wordList);
+    Graph g(wordList);
     g.addVertex(beginWord);
     return g.BFS(beginWord, endWord, wordList);
   }
