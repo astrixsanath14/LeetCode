@@ -18,7 +18,7 @@ void Graph::addVertex(string &vertex)
   vertexDistance[vertex] = -1;
 }
 
-// BFS algorithm
+// BFS algorithm 
 int Graph::BFS(string &startVertex, string &endVertex, vector<string>& wordList) {
   list<string> queue;
   queue.push_back(startVertex);
