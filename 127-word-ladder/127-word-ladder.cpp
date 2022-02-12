@@ -54,7 +54,6 @@ int Graph::BFS(string &startVertex, string &endVertex) {
     for (i = adjLists[currVertex].begin(); i != adjLists[currVertex].end(); ++i) {
       string adjVertex = *i;
       if (!visited[adjVertex]) {
-        cout<<adjVertex<<" ";
         vertexDistance[adjVertex] = vertexDistance[currVertex]+1;
         visited[adjVertex] = true;
         queue.push_back(adjVertex);
