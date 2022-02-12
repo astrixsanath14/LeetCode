@@ -1,7 +1,6 @@
 unordered_map<string,bool> wordOccurrence;
 class Graph {
   int numVertices;
-  map<string,bool> visited;
   map<string,int> vertexDistance;
 
    public:
@@ -18,22 +17,18 @@ Graph::Graph(int vertices) {
 void Graph::setVertices(vector<string> &vertices)
 { 
   for (string vertex:vertices)
-  {
     addVertex(vertex);
-  }
 }
 
 void Graph::addVertex(string &vertex)
 {
-    visited[vertex] = false;
-    vertexDistance[vertex] = -1;
+  vertexDistance[vertex] = -1;
 }
 
 // BFS algorithm
 int Graph::BFS(string &startVertex, string &endVertex, vector<string>& wordList) {
   list<string> queue;
   queue.push_back(startVertex);
-  visited[startVertex] = true;
   vertexDistance[startVertex] = 1;
   int len = wordList[0].length();
   while (!queue.empty()) 
@@ -51,9 +46,8 @@ int Graph::BFS(string &startVertex, string &endVertex, vector<string>& wordList)
         if(temp!=currVertex && wordOccurrence[temp])
         {
           string adjVertex = temp;
-          if (!visited[adjVertex]) {
+          if (vertexDistance[adjVertex]==-1) {
             vertexDistance[adjVertex] = vertexDistance[currVertex]+1;
-            visited[adjVertex] = true;
             queue.push_back(adjVertex);
             if(adjVertex == endVertex)
             {
