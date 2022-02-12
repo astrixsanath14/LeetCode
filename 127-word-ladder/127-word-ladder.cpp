@@ -62,7 +62,8 @@ public:
     if(!wordOccurrence[endWord])
       return 0;
     Graph g(wordList);
-    g.addVertex(beginWord);
+    if(!wordOccurrence[beginWord])
+      g.addVertex(beginWord);
     return g.BFS(beginWord, endWord, wordList);
   }
 };
