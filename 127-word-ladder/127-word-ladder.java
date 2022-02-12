@@ -15,10 +15,8 @@ class Solution {
                 if(word.equals(endWord)) return changes;
                 
                 for(int j = 0; j < word.length(); j++){
-                    for(int k = 'a'; k <= 'z'; k++){
-                        char arr[] = word.toCharArray();
-                        arr[j] = (char) k;
-                        
+                  char arr[] = word.toCharArray();
+                    for(arr[j] = 'a'; arr[j] <= 'z'; arr[j]++){
                         String str = new String(arr);
                         if(set.contains(str)){
                             queue.add(str);
