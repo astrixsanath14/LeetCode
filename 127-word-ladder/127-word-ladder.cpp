@@ -50,9 +50,7 @@ int Graph::BFS(string &startVertex, string &endVertex) {
   vertexDistance[startVertex] = 1;
   while (!queue.empty()) {
     string currVertex = queue.front();
-    cout << "Visited: " << currVertex << "\n";
     queue.pop_front();
-    cout<<"adjVertex: ";
     for (i = adjLists[currVertex].begin(); i != adjLists[currVertex].end(); ++i) {
       string adjVertex = *i;
       if (!visited[adjVertex]) {
@@ -66,7 +64,6 @@ int Graph::BFS(string &startVertex, string &endVertex) {
         }
       }
     }
-    cout<<"\n";
   }
   return 0;
 }
@@ -79,17 +76,12 @@ public:
     for(auto word:wordList)
       wordOccurrence[word] = true;
     wordOccurrence[beginWord] = true;
-    // if(!count(wordList.begin(), wordList.end(), endWord))
-    //     return 0;
     if(!wordOccurrence[endWord])
       return 0;
     int len = wordList[0].length();
     Graph g(wordList.size()+1);
     g.setVertices(wordList);
     g.addVertex(beginWord);
-    
-    // for(int i=0;i<wordList.size()-1;i++)
-    //   g.addEdge(wordList[i], wordList[i+1]);
     for(auto word:wordList)
     {
       vector<string> adjacentWords{word};
@@ -108,7 +100,6 @@ public:
     }
     if(!count(wordList.begin(), wordList.end(), beginWord))
     {
-      cout<<"beginWord: "<<beginWord<<" is not present in wordList"<<"\n";
       bool foundAtLeastOneSeq = false;
       for(int i=0;i<len;i++)
       {
