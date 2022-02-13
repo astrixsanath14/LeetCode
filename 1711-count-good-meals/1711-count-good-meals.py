@@ -21,7 +21,7 @@ class Solution:
               if counterSum != deli:
                 ways = counter[counterSum] * counter[deli]
               elif counterSum == deli:
-                ways = (counter[deli]*(counter[deli]-1))//2
+                ways = (counter[deli]*(counter[deli]-1))//2 # Combinatorics dawwww
               if ways>0:
                 goodMeals += ways
                 goodMeals%=MOD
