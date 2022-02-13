@@ -1,21 +1,19 @@
 MOD = 1E9+7
 class Solution:
     def countPairs(self, deliciousness: List[int]) -> int:
-        powers=[]
-        for i in range(21,-1,-1):
-          powers.append(1<<i)
+        # powers=[]
+        # for i in range:
+        #   powers.append()
         counter = {}
         for deli in deliciousness:
           if deli not in counter:
             counter[deli]=0
           counter[deli]+=1
         deliciousness = set(deliciousness)
-        print(counter)
-        print(powers)
-        print(deliciousness)
         goodMeals = 0
         for deli in deliciousness:
-          for power in powers:
+          for i in range(21,-1,-1):
+            power = 1<<i
             if power < deli:
               break
             counterSum = power - deli
@@ -28,9 +26,12 @@ class Solution:
               elif counterSum == deli:
                 ways = (counter[deli]*(counter[deli]-1))//2
               if ways>0:
-                print('found',counterSum, deli, power, ways)
                 goodMeals += ways
                 goodMeals%=MOD
         return int(goodMeals)
       
-# [149,107,1,63,0,1,6867,1325,5611,2581,39,89,46,18,12,20,22,234]
+"""
+[1,3,5,7,9]
+[1,1,1,3,3,3,7]
+[149,107,1,63,0,1,6867,1325,5611,2581,39,89,46,18,12,20,22,234]
+"""
