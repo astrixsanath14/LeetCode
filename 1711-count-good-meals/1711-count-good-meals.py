@@ -1,9 +1,6 @@
 MOD = 1E9+7
 class Solution:
     def countPairs(self, deliciousness: List[int]) -> int:
-        # powers=[]
-        # for i in range:
-        #   powers.append()
         counter = {}
         for deli in deliciousness:
           if deli not in counter:
