@@ -1,3 +1,4 @@
+# BitMasking technique - Lexicographic generation based on the mapping between binary bitmasks and the corresponding permutations / combinations / subsets.
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
