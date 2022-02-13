@@ -1,7 +1,7 @@
 class Solution {
 public:
   vector<vector<int>> generate(int numRows) {
-    vector<vector<int>> pascalTriangle;
+    vector<vector<int>> pascalTriangle(numRows);
     for(int i=0;i<numRows;i++)
     {
       int colCount = i+1;
@@ -10,7 +10,7 @@ public:
       {
         temp[j] = pascalTriangle[i-1][j-1] + pascalTriangle[i-1][j];
       }
-      pascalTriangle.push_back(temp);
+      pascalTriangle[i] = temp;
     }
     return pascalTriangle;
   }
