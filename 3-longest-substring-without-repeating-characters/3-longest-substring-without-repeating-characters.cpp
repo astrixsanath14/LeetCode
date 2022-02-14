@@ -16,7 +16,7 @@ public:
       posTracker[s[i]] = i;
       maxLen = max(maxLen, counter);
       if(s.length() - i - 1 + counter <= maxLen)
-        break;
+        return maxLen;
     }
     return maxLen;
   }
