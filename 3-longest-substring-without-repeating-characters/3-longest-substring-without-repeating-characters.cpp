@@ -1,7 +1,7 @@
 class Solution {
 public:
   int lengthOfLongestSubstring(string s) {
-    map<char,int> posTracker;
+    unordered_map<char,int> posTracker;
     int maxLen = 0, counter=0, first = 0;
     for(int i=0;i<s.length();i++)
     {
