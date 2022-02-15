@@ -1,8 +1,7 @@
 class Solution {
 public:
   int singleNumber(vector<int>& nums) {
-    for(int i=1;i<nums.size();i++)
-      nums[i] = nums[i]^nums[i-1];
-    return nums[nums.size()-1];
+    set<int> s(nums.begin(), nums.end());
+    return 2*accumulate(s.begin(), s.end(), 0) - accumulate(nums.begin(), nums.end(), 0);
   }
 };
