@@ -5,13 +5,12 @@ class Solution {
 public:
   int getMaximumGold(vector<vector<int>>& grid, int currI, int currJ, int &rows, int &columns)
   {
-    if(currI<0 || currI>=rows || currJ<0 || currJ>=columns || grid[currI][currJ]<=0)
-      return 0;
     int maxGold = 0;
     grid[currI][currJ]*=-1;
     
     for(int p=0;p<4;p++)
-      maxGold = max(maxGold, getMaximumGold(grid, currI + dx[p], currJ + dy[p], rows, columns));
+      if((currI + dx[p]>=0) && (currI+dx[p]<rows) && (currJ+dy[p]>=0) && (currJ+dy[p]<columns) && (grid[currI+dx[p]][currJ+dy[p]])>0)
+        maxGold = max(maxGold, getMaximumGold(grid, currI + dx[p], currJ + dy[p], rows, columns));
     
     grid[currI][currJ]*=-1;
     return maxGold + grid[currI][currJ];
