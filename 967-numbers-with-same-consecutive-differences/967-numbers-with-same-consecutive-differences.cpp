@@ -9,9 +9,9 @@ public:
       return;
     }
     int currDigit = curr%10, nextDigitLeft = currDigit-k, nextDigitRight = currDigit+k;
-    if(nextDigitLeft>=0 && nextDigitLeft<=9)
+    if(nextDigitLeft>=0)
       createNumsSameConsecDiff(n-1, k, curr*10+nextDigitLeft);
-    if(nextDigitRight>=0 && nextDigitRight<=9 && nextDigitRight!=nextDigitLeft)
+    if(nextDigitRight<=9 && nextDigitRight!=nextDigitLeft)
       createNumsSameConsecDiff(n-1, k, curr*10+nextDigitRight);
   }
     
