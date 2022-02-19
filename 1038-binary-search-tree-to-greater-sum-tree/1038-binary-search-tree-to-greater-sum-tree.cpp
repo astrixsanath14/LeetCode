@@ -10,20 +10,21 @@
  * };
  */
 
-int reverseInOrderTraversal(TreeNode* root, int sum)
+void reverseInOrderTraversal(TreeNode* root, int& sum)
 {
-  if(root == NULL)
-    return sum;
-  int right = reverseInOrderTraversal(root->right, sum);
-  root->val += right;
-  int left = reverseInOrderTraversal(root->left, root->val);
-  return left;
+  if(!root)
+    return;
+  reverseInOrderTraversal(root->right, sum);
+  sum+= root->val;
+  root->val = sum;
+  reverseInOrderTraversal(root->left, sum);
 }
 
 class Solution {
 public:
   TreeNode* bstToGst(TreeNode* root) {
-    reverseInOrderTraversal(root, 0);
+    int sum=0;
+    reverseInOrderTraversal(root, sum);
     return root;
   }
 };
