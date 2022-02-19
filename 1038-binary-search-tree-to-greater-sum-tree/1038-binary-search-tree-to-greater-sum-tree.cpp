@@ -10,8 +10,7 @@
  * };
  */
 
-void reverseInOrderTraversal(TreeNode* root, int& sum)
-{
+void reverseInOrderTraversal(TreeNode* root, int& sum){
   if(!root)
     return;
   reverseInOrderTraversal(root->right, sum);
