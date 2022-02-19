@@ -9,21 +9,20 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-void reverseInOrderTraversal(TreeNode* root, int& sum){
-  if(!root)
-    return;
-  reverseInOrderTraversal(root->right, sum);
-  sum+= root->val;
-  root->val = sum;
-  reverseInOrderTraversal(root->left, sum);
-}
-
 class Solution {
-public:
-  TreeNode* bstToGst(TreeNode* root) {
-    int sum=0;
-    reverseInOrderTraversal(root, sum);
-    return root;
+  void reverseInOrderTraversal(TreeNode* root, int& sum){
+    if(!root)
+      return;
+    reverseInOrderTraversal(root->right, sum);
+    sum+= root->val;
+    root->val = sum;
+    reverseInOrderTraversal(root->left, sum);
   }
+
+  public:
+    TreeNode* bstToGst(TreeNode* root) {
+      int sum=0;
+      reverseInOrderTraversal(root, sum);
+      return root;
+    }
 };
