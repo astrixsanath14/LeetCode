@@ -19,7 +19,6 @@ class Solution {
       return;
     }
     String currWord = s.substring(startIdx, currIdx);
-    System.out.println("currWord: " + currWord);
     if(wordDict.contains(currWord))
     {
       String nextSentence = sentence;
