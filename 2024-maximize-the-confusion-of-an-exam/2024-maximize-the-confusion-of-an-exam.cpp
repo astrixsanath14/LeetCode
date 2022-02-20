@@ -21,7 +21,7 @@ public:
   }
   
   int maxConsecutiveAnswers(string answerKey, int k) {
-    int left = 1, right = answerKey.length(), maxPossibleLen = -1;
+    int left = 1, right = answerKey.length();
     while(left <= right)
     {
       int mid = (left+right)/2;
@@ -33,7 +33,6 @@ public:
       }
       else
       {
-        maxPossibleLen = mid;
         if(!isPosibleConsecutiveAnswers(answerKey, k, mid+1))
           return mid;
         left = mid + 1;
