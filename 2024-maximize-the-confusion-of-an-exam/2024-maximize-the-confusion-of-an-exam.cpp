@@ -39,6 +39,6 @@ public:
         left = mid + 1;
       }
     }
-    return maxPossibleLen;
+    return 0;
   }
 };
