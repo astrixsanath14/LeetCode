@@ -1,3 +1,5 @@
+// https://www.cs.utexas.edu/~moore/best-ideas/mjrty/
+
 class Solution {
   public int majorityElement(int[] nums) {
     int counter = 0, majority=-1;
