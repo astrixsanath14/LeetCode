@@ -30,7 +30,6 @@ public:
         }
       }
     }
-    print(matrix);
     for(int j=1;j<n;j++)
     {
      if(!matrix[0][j]) 
