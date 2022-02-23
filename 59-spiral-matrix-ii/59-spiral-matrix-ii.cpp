@@ -8,7 +8,7 @@ public:
       int done = 0;
       while(col>=0 && col<n && row<n && row>=0 && spiral[row][col]==0)
       {
-        cout<<"done::: row: "<<row<<" col: "<<col<<" count: "<<count<<"\n";
+        // cout<<"done::: row: "<<row<<" col: "<<col<<" count: "<<count<<"\n";
         spiral[row][col] = count++;
         col+=dx[directionIndex];
         row+=dy[directionIndex];
@@ -19,7 +19,7 @@ public:
       directionIndex = (directionIndex+1)%4;
       col+=dx[directionIndex];
       row+=dy[directionIndex];
-      cout<<"next direction::: "<<directionIndex<<" row: "<<row<<" col: "<<col<<" count: "<<count<<"\n";
+      // cout<<"next direction::: "<<directionIndex<<" row: "<<row<<" col: "<<col<<" count: "<<count<<"\n";
     }
     return spiral;
   }
