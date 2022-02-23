@@ -25,6 +25,8 @@ public:
       if(node == NULL)
         return NULL;
       unordered_map<int,Node*> nodeValVsNodeMap;
+      Node* cloneNode = new Node(1);
+      nodeValVsNodeMap[1] = cloneNode;
       unordered_map<int,bool> visitedNode;
       queue<Node*> remainingQ;
       remainingQ.push(node);
@@ -35,16 +37,7 @@ public:
         {
           Node* currNode = remainingQ.front();
           remainingQ.pop();
-          Node* currNewNode;
-          if(nodeValVsNodeMap.count(currNode->val)==0)
-          {
-            currNewNode = new Node(currNode->val);
-            nodeValVsNodeMap[currNewNode->val] = currNewNode;
-          }
-          else
-          {
-            currNewNode = nodeValVsNodeMap[currNode->val];
-          }
+          Node* currNewNode = nodeValVsNodeMap[currNode->val];
           for(Node* adjNode:currNode->neighbors)
           {
             Node* newAdjNode;
@@ -59,7 +52,6 @@ public:
             }
             if(find(currNewNode->neighbors.begin(), currNewNode->neighbors.end(), newAdjNode)==currNewNode->neighbors.end())
               currNewNode->neighbors.push_back(newAdjNode);
-            // newAdjNode->neighbors.push_back(currNewNode);
             if(!visitedNode[adjNode->val])
             {
               remainingQ.push(adjNode);
@@ -68,6 +60,6 @@ public:
           visitedNode[currNode->val] = true;
         }
       }
-      return nodeValVsNodeMap[1];
+      return cloneNode;
     }
 };
