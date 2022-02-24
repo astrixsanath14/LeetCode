@@ -28,8 +28,6 @@ public:
     ListNode* prev = it;
     while(it!=NULL)
     {
-      cout<<"Here \n";
-      cout<<prev->val<<" "<<it->val<<"\n";
       while(it!=NULL && it->val>=prevVal){
         prevVal = it->val;
         prev=it;
@@ -41,8 +39,6 @@ public:
       ListNode* moveNode = it;
       prev->next=moveNode->next;
       it=it->next;
-      cout<<"Shift "<<moveNode->val<<"\n";
-      cout<<"Head "<<head->val<<"\n";
       if(moveNode->val<=head->val)
       {
         moveNode->next=head;
@@ -59,12 +55,11 @@ public:
         }
         leftNode->next = moveNode;
         moveNode->next = rightNode;
-        cout<<"Done \n";
       }
       if(it==NULL)
         break;
     }
-  printLinkedList(head);
+  // printLinkedList(head);
   return head;
   }
 };
