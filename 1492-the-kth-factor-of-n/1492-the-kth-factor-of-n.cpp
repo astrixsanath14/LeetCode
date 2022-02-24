@@ -15,8 +15,7 @@ public:
     {
       if(k<=count/2 && count/2>0)
         return factors[k-1];
-      int ind = count - k;
-      return n/factors[ind];
+      return n/factors[count - k];
     }
     return -1;
   }
