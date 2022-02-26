@@ -1,0 +1,65 @@
+// { Driver Code Starts
+//Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+//User function template for C++
+
+class Solution{   
+public:
+    long long findSmallest(long long arr[], int n) {
+        // code here
+        long long ans = 1, i=0;
+        for(i=0;i<n;i++)
+        {
+            // cout<<"ans: "<<ans<<" i: "<<i<<" "<<arr[i]<<"\n";
+            if(arr[i] > ans)
+                return ans;
+            ans += arr[i];
+        }
+        return ans;
+    }
+};
+/*
+[]
+1
+
+[2]
+1
+
+[1] -> (1)
+2
+
+[1,2] -> (1,2,3)
+[4]
+
+[1,2,3] -> (1,2,3,3,4,5,6)
+[7]
+
+[1,2,4] -> (1,2,3,4,5,6,7)
+[8]
+
+[1,2,5] -> (1,2,3,5,6,7,8)
+[]
+*/
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        long long arr[n];
+        for (int i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        Solution ob;
+        auto ans = ob.findSmallest(arr, n);
+        cout << ans << "\n";
+    }
+    return 0;
+}
+  // } Driver Code Ends
