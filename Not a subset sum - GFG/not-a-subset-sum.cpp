@@ -10,11 +10,9 @@ using namespace std;
 class Solution{   
 public:
     long long findSmallest(long long arr[], int n) {
-        // code here
-        long long ans = 1, i=0;
-        for(i=0;i<n;i++)
+        long long ans = 1;
+        for(int i=0;i<n;i++)
         {
-            // cout<<"ans: "<<ans<<" i: "<<i<<" "<<arr[i]<<"\n";
             if(arr[i] > ans)
                 return ans;
             ans += arr[i];
@@ -42,7 +40,7 @@ public:
 [8]
 
 [1,2,5] -> (1,2,3,5,6,7,8)
-[]
+[4]
 */
 
 // { Driver Code Starts.
