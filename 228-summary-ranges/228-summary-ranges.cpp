@@ -17,11 +17,11 @@ public:
             rangesV.back().second = nums[i];
         }
       }
-      vector<string> ranges;
-      for(pair<int,int> range : rangesV)
+      vector<string> ranges(rangesV.size());
+      for(int rangeInd=0;rangeInd<rangesV.size();rangeInd++)
       {
-        string nextRange = to_string(range.first) + (range.second != range.first ? "->" + to_string(range.second) : "");
-        ranges.push_back(nextRange);
+        string nextRange = to_string(rangesV[rangeInd].first) + (rangesV[rangeInd].second != rangesV[rangeInd].first ? "->" + to_string(rangesV[rangeInd].second) : "");
+        ranges[rangeInd] = nextRange;
       }
       return ranges;
     }
