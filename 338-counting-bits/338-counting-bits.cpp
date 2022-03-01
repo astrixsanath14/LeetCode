@@ -7,7 +7,7 @@ public:
     ans[0] = 0;
     ans[1] = 1;
     int powerOf2 = 2, ind=2; 
-    cout<<"n: "<<n<<"\n";
+    // cout<<"n: "<<n<<"\n";
     while(ind <= n)
     {
       int counter = 1;
