@@ -73,7 +73,7 @@ public:
     vector<int> recentTweets_10;
     for(int tweetNo = 1;tweetNo<=10 && !recentTweets.empty();tweetNo++)
     {
-      print_queue(recentTweets);
+      // print_queue(recentTweets);
       TweetInfo recentTweet = recentTweets.top();
       recentTweets.pop();
       int tweetUserID = recentTweet.userID;
