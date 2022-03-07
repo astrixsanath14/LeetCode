@@ -25,8 +25,8 @@ public:
 	{
 	    vector<string> result;
 	    string ans = "1";
-	    int noOfOnes = 1, noOfOnes + noOfZeros = 0;
-	    NBitBinary(N, ans, noOfOnes, index, result);
+	    int noOfOnes = 1, noOfZeros = 0;
+	    NBitBinary(N, ans, noOfOnes, noOfZeros, result);
 	    return result;
 	}
 };
