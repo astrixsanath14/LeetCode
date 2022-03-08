@@ -14,13 +14,13 @@ public:
     if(head == NULL || head->next == NULL)
       return false;
     ListNode *hare = head->next, *tortoise = head;
-    while(hare != NULL && tortoise != NULL && hare != tortoise)
+    while(hare != NULL && hare->next != NULL)
     {
-      hare = hare->next;
-      if(hare != NULL)
-        hare = hare->next;
+      hare = hare->next->next;
       tortoise = tortoise->next;
+      if(hare == tortoise)
+        return true;
     }
-    return hare != NULL && tortoise != NULL;
+    return false;
   }
 };
