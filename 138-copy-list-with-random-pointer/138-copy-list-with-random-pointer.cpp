@@ -17,41 +17,28 @@ public:
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-      if(!head)
-        return NULL;
-      vector<Node*> nodes, newNodes;
-      Node *result = NULL, *temp = head, *resultTemp = result;
-      map<Node*,int> nodeVsPosition;
+      Node *result = new Node(-1), *temp = head, *resultTemp = result;
+      map<Node*,Node*> nodeVsCopiedNode;
       int ind = 0;
       while(temp)
       {
-        if(!resultTemp)
-        {
-          resultTemp = new Node(temp->val);
-          result = resultTemp;
-        }
-        else
-        {
-          resultTemp->next = new Node(temp->val);
-          resultTemp = resultTemp->next;
-        }
-        
-        newNodes.push_back(resultTemp);
-        nodeVsPosition[temp] = ind++;
-        
+        resultTemp->next = new Node(temp->val);
+        resultTemp = resultTemp->next;
+        nodeVsCopiedNode[temp] = resultTemp;
+                
         temp = temp->next;
       }
       temp = head;
-      resultTemp = result;
+      resultTemp = result->next;
       while(temp)
       {
         if(temp->random)
         {
-          resultTemp->random = newNodes[nodeVsPosition[temp->random]];
+          resultTemp->random = nodeVsCopiedNode[temp->random];
         }
         temp = temp->next;
         resultTemp = resultTemp->next;
       }
-      return result;
+      return result->next;
     }
 };
