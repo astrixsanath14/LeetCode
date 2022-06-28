@@ -14,7 +14,6 @@ public:
     while(!maxHeap.empty())
     {
       int top = maxHeap.top();
-      // cout<<"top: "<<top<<"\n";
       maxHeap.pop();
       while(top!=0 && !maxHeap.empty() && maxHeap.top() == top)
       {
