@@ -7,7 +7,6 @@ public:
     priority_queue<int> maxHeap;
     for(int i=0;i<26;i++)
     {
-      // cout<<i<<" "<<freq[i]<<"\n";
       if(freq[i] != 0)
         maxHeap.push(freq[i]);
     }
@@ -23,7 +22,6 @@ public:
         maxHeap.pop();
         maxHeap.push(top-1);
       }
-      // cout<<"deletedCount: "<<deletedCount<<"\n";
     }
     return deletedCount;
   }
