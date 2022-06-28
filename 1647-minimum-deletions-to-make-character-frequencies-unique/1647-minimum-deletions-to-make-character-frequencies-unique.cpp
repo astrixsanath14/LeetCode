@@ -15,7 +15,9 @@ public:
     {
       int top = maxHeap.top();
       maxHeap.pop();
-      while(top!=0 && !maxHeap.empty() && maxHeap.top() == top)
+      if(top == 0)
+        break;
+      while(!maxHeap.empty() && maxHeap.top() == top)
       {
         deletedCount++;
         maxHeap.pop();
