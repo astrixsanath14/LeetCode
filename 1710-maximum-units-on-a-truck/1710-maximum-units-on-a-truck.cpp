@@ -9,7 +9,7 @@ public:
     int res = 0;
     for(vector<int> boxType : boxTypes)
     {
-      cout<<boxType[0]<<" "<<boxType[1]<<endl;
+      // cout<<boxType[0]<<" "<<boxType[1]<<endl;
       if(!truckSize)
         break;
       int truckSizeForType = min(truckSize, boxType[0]);
