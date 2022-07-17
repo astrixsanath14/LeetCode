@@ -8,6 +8,9 @@ public:
   }
   
   int minOperations(vector<int>& nums, vector<int>& numsDivide) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
     int gcdNums = *max_element(numsDivide.begin(), numsDivide.end());
     for(int i:numsDivide)
     {
