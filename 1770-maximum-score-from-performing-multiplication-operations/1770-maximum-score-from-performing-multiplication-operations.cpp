@@ -81,7 +81,7 @@ public:
     int solve(int i, int n, int j, vector<int> &nums, vector<int> &M){
         
         if (j == M.size()) return 0;
-        if (dp[i][j] != INT_MIN) return dp[i][j];
+        if (dp[i][j] != -1001) return dp[i][j];
         
         // Left Side
         int left = solve(i + 1, n, j + 1, nums, M) + (nums[i] * M[j]);
@@ -94,7 +94,7 @@ public:
     
     int maximumScore(vector<int>& nums, vector<int>& M) {   
         int n = nums.size(), m = M.size();
-        dp.resize(m + 1, vector<int>(m + 1, INT_MIN));
+        dp.resize(m + 1, vector<int>(m + 1, -1001));
         return solve(0, n, 0, nums, M);
     }
 };
