@@ -1,27 +1,28 @@
-// // class Solution {
-// // public:
-// //   long long maximumScore(vector<int>& nums, vector<int>& multipliers, int mInd, int left, long long score, vector<vector<long long>> &dp){
-// //     if(mInd == multipliers.size())
-// //     {
-// //       return score;
-// //     }
-// //     int leftScore = multipliers[mInd] * nums[left];
-// //     if(dp[mInd][left] != -1)
-// //       return dp[mInd][left];
+class Solution {
+public:
+  int maximumScore(vector<int>& nums, vector<int>& multipliers, int mInd, int left, int score, vector<vector<int>> &dp){
+    if(mInd == multipliers.size())
+    {
+      return 0;
+    }
+    if(dp[mInd][left] != INT_MIN)
+      return dp[mInd][left];
     
-// //     int right = nums.size() - (mInd - left) - 1;
-// //     int rightScore = multipliers[mInd] * nums[right];
+    int leftScore = multipliers[mInd] * nums[left];
+    int right = nums.size() - (mInd - left) - 1;
+    int rightScore = multipliers[mInd] * nums[right];
+    leftScore = maximumScore(nums, multipliers, mInd+1, left+1, leftScore, dp) + leftScore;
+    rightScore = maximumScore(nums, multipliers, mInd+1, left, rightScore, dp) + rightScore;
     
-// //     return dp[mInd][left] = max(maximumScore(nums, multipliers, mInd+1, left+1, score + leftScore, dp), maximumScore(nums, multipliers, mInd+1, left, score + rightScore, dp));
-// //   }
+    return dp[mInd][left] = max(leftScore, rightScore);
+  }
 
-// //   long long maximumScore(vector<int>& nums, vector<int>& multipliers) {
-// //     int mInd = 0, left = 0, right = nums.size()-1;
-// //     int m = multipliers.size();
-// //     vector<vector<long long>> dp(m, vector<long long>(m,-1));
-// //     return maximumScore(nums, multipliers, mInd, left, 0, dp);
-// //   }
-// // };
+  int maximumScore(vector<int>& nums, vector<int>& multipliers) {
+    int m = multipliers.size();
+    vector<vector<int>> dp(m, vector<int>(m, INT_MIN));
+    return maximumScore(nums, multipliers, 0, 0, 0, dp);
+  }
+};
 
 
 // class Solution {
@@ -55,30 +56,30 @@
 //   }
 // };
 
-class Solution {
-public:
-    int m, n;
-    int maximumScore(vector<int>& nums, vector<int>& muls) {
-      n = nums.size();
-      m = muls.size();
-      int memo[1001][1001];
-      for(int i=0;i<m;i++){
-        for(int j=0; j<m;j++){
-          memo[i][j] = INT_MIN;
-          // cout<<memo[i][j]<<" ";
-        }
-        // cout<<"\n";
-      }
-      return dp(0, 0, nums, muls, memo);
-    }
-    int dp(int l, int i, vector<int>& nums, vector<int>& muls, int memo[][1001]) {
-        if (i == m) return 0; // Picked enough m elements
-        if (memo[l][i] != INT_MIN) return memo[l][i];
-        int pickLeft = dp(l+1, i+1, nums, muls, memo) + nums[l] * muls[i]; // Pick the left side
-        int pickRight = dp(l, i+1, nums, muls, memo) + nums[n-(i-l)-1] * muls[i]; // Pick the right side
-        return memo[l][i] = max(pickLeft, pickRight);
-    }
-};
+// class Solution {
+// public:
+//     int m, n;
+//     int maximumScore(vector<int>& nums, vector<int>& muls) {
+//       n = nums.size();
+//       m = muls.size();
+//       int memo[1001][1001];
+//       for(int i=0;i<m;i++){
+//         for(int j=0; j<m;j++){
+//           memo[i][j] = INT_MIN;
+//           // cout<<memo[i][j]<<" ";
+//         }
+//         // cout<<"\n";
+//       }
+//       return dp(0, 0, nums, muls, memo);
+//     }
+//     int dp(int l, int i, vector<int>& nums, vector<int>& muls, int memo[][1001]) {
+//         if (i == m) return 0; // Picked enough m elements
+//         if (memo[l][i] != INT_MIN) return memo[l][i];
+//         int pickLeft = dp(l+1, i+1, nums, muls, memo) + nums[l] * muls[i]; // Pick the left side
+//         int pickRight = dp(l, i+1, nums, muls, memo) + nums[n-(i-l)-1] * muls[i]; // Pick the right side
+//         return memo[l][i] = max(pickLeft, pickRight);
+//     }
+// };
 
 // class Solution {
 // public:
