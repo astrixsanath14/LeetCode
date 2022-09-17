@@ -19,8 +19,8 @@ public:
                 const string &word = words[i];
                 const int wordLen = word.length();
                 if (!isPalindrome(word, 0, wordLen - 1)) continue;
-                results.emplace_back(vector<int>{emptyIndex, i});
-                results.emplace_back(vector<int>{i, emptyIndex});
+                results.push_back(vector<int>{emptyIndex, i});
+                results.push_back(vector<int>{i, emptyIndex});
             }
         }
         
@@ -32,21 +32,21 @@ public:
             for (int sublen = 1; sublen < wordLen; sublen++) {
                 const int matchIndex = findLeftSubstrMatchIndex(word, sublen);
                 if (matchIndex < 0 || matchIndex == i) continue;
-                results.emplace_back(vector<int>{i, matchIndex});
+                results.push_back(vector<int>{i, matchIndex});
             }
             
             // Check if substr(word, sublen) from right == reversedWord
             for (int sublen = 1; sublen < wordLen; sublen++) {
                 const int matchIndex = findRightSubstrMatchIndex(word, sublen);
                 if (matchIndex < 0 || matchIndex == i) continue;
-                results.emplace_back(vector<int>{matchIndex, i});
+                results.push_back(vector<int>{matchIndex, i});
             }
             
             // Check if word == reversedWord
             const int matchIndex = findLeftSubstrMatchIndex(word, wordLen);
             if (matchIndex < 0 || matchIndex >= i) continue; // matchIndex >= i is to avoid duplicate pairs, matchIndex <= i would also be okay
-            results.emplace_back(vector<int>{i, matchIndex});
-            results.emplace_back(vector<int>{matchIndex, i});
+            results.push_back(vector<int>{i, matchIndex});
+            results.push_back(vector<int>{matchIndex, i});
         }
         return results;
     }
