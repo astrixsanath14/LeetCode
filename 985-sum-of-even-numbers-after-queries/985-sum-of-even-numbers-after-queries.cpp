@@ -3,14 +3,8 @@
 class Solution {
 public:
   vector<int> sumEvenAfterQueries(vector<int>& nums, vector<vector<int>>& queries) {
-//     auto is_even = [](int i) { return i % 2 == 0; };
-//     auto evens = nums | views::filter(is_even);
-    
-    std::vector<int> foo = {25,15,5,-5,-15};
-    std::vector<int> evens;
-    // copy only even numbers:
-    std::copy_if (nums.begin(), nums.end(), back_inserter(evens), [](int i){return i%2==0;} );
-    int sum = accumulate(begin(evens), end(evens), 0);
+    int sum = accumulate(begin(nums), end(nums), 0, [](int sum, int x) {
+            return x%2==0 ? sum + x : sum; });
     
     int q = queries.size();
     vector<int> result(q);
