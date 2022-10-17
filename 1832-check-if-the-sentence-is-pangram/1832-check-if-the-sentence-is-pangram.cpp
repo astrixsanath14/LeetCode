@@ -1,12 +1,22 @@
 class Solution {
 public:
     bool checkIfPangram(string sentence) {
-        int chars[26] = {0}, sum = 0;
-        for(char c:sentence)
-        {
-            sum += chars[c-'a']==0;
-            chars[c-'a']++;
+        // Initialize seen = 0 since we start with no letter.
+        int seen = 0;
+        
+        // Iterate over 'sentence'.
+        for (auto currChar : sentence) {
+            // Map each 'currChar' to its index using its ASCII code.
+            int mappedIndex = currChar - 'a';
+
+            // 'currBit' represents the bit for 'currChar'.
+            int currBit = 1 << mappedIndex;
+
+            // Use 'OR' operation since we only add its bit for once.
+            seen |= currBit;
         }
-        return sum == 26;
+        
+        // Once we finish iterating, check if 'seen' contains 26 bits of 1.
+        return seen == (1 << 26) - 1;
     }
 };
