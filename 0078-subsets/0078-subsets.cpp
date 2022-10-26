@@ -10,9 +10,9 @@ public:
             result.push_back(subset);
             return;
         }
-        subsets(i+1, nums, j, tempSubset, result);
         tempSubset[j] = nums[i++];
         subsets(i, nums, j+1, tempSubset, result);
+        subsets(i, nums, j, tempSubset, result);
     }
     
     vector<vector<int>> subsets(vector<int>& nums) {
