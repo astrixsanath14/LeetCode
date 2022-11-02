@@ -1,13 +1,13 @@
 class Solution {
 public:
-    int getDiff(string gene1, string gene2)
+    int isValidMutation(string gene1, string gene2)
     {
         if(gene1.size() != gene2.size())
-            return max(gene1.size(), gene2.size());
+            return false;
         int diffCount = 0;
         for(int i=0;i<8;i++)
             diffCount += gene1[i] != gene2[i];
-        return diffCount;
+        return diffCount == 1;
     }
     
     int minMutationCount(string start, string end, vector<string>& bank) {
@@ -20,8 +20,7 @@ public:
         {
             string gene = bank[i];
             bank[i] = "-1";
-            int diffCount = getDiff(start, gene);
-            if(diffCount == 1)
+            if(isValidMutation(start, gene))
             {
                 int minMutationForCurrGene = minMutationCount(gene, end, bank);
                 if(minMutationForCurrGene!=INT_MAX)
