@@ -9,20 +9,13 @@ public:
     
     void addNum(int num) {
         smaller.push(num);
+        larger.push(-smaller.top());
+        smaller.pop();
         totalCount++;
-        if(smaller.size() > larger.size())
+        if(larger.size() > (1+smaller.size()))
         {
-            larger.push(-smaller.top());
-            smaller.pop();
-        }
-        else if(smaller.top() > -larger.top())
-        {
-            int smallerTop = smaller.top();
-            int largerTop = -larger.top();
-            smaller.pop();
+            smaller.push(-larger.top());
             larger.pop();
-            smaller.push(largerTop);
-            larger.push(-smallerTop);
         }
     }
     
