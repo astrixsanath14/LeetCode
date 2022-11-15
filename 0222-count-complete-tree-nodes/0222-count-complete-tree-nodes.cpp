@@ -16,10 +16,6 @@ public:
         {
             return 0;
         }
-        if(root->left == NULL && root->left == NULL)
-        {
-            return 1;
-        }
         return 1 + countNodes(root->left) + countNodes(root->right);
     }
 };
