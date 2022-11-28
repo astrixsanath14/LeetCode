@@ -18,7 +18,7 @@ public:
             {
                 result[0].push_back(player);
             }
-            if(playerVsLostMp[player] == 1)
+            else if(playerVsLostMp[player] == 1)
             {
                 result[1].push_back(player);
             }
