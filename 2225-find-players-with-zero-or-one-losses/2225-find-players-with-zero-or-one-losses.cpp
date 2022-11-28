@@ -2,12 +2,10 @@ class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
         map<int,int> playerVsLostMp;
-        map<int,int> playerVsWonMp;
         set<int> players;
         for(vector<int> match : matches)
         {
             playerVsLostMp[match[1]]++;
-            playerVsWonMp[match[0]]++;
             players.insert(match[0]);
             players.insert(match[1]);
         }
