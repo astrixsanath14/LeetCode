@@ -2,25 +2,22 @@ class Solution {
 public:
     vector<vector<int>> findWinners(vector<vector<int>>& matches) {
         map<int,int> playerVsLostMp;
-        set<int> players;
         for(vector<int> match : matches)
         {
             playerVsLostMp[match[1]]++;
-            players.insert(match[0]);
-            players.insert(match[1]);
+            if(playerVsLostMp.find(match[0]) == playerVsLostMp.end())
+            {
+                playerVsLostMp[match[0]]=0;
+            }
         }
         
         vector<vector<int>> result(2, vector<int>());
         
-        for(int player : players)
+        for(auto& ref : playerVsLostMp)
         {
-            if(playerVsLostMp[player] == 0)
+            if(ref.second <= 1)
             {
-                result[0].push_back(player);
-            }
-            else if(playerVsLostMp[player] == 1)
-            {
-                result[1].push_back(player);
+                result[ref.second].push_back(ref.first);
             }
         }
         
